@@ -1,14 +1,54 @@
-<div class="card">
-  <div class="card-header">
-    {{ pageTitle + ": " + products.productName }}
+<main class="container">
+  <div class="card">
+    <div class="card-header">
+      {{ pageTitle + ": " + products.productName }}
+    </div>
+
+    <div class="product-detail-body">
+      <table class="table-responsive">
+        <thead>
+          <tr>
+            <th>Name:</th>
+          </tr>
+          <tr>
+            <th>Code:</th>
+          </tr>
+          <tr>
+            <th>Description:</th>
+          </tr>
+          <tr>
+            <th>Availability:</th>
+          </tr>
+          <tr>
+            <th>Price:</th>
+          </tr>
+          <tr>
+            <th>5 star Rating:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ products.productName }}</td>
+            <td>
+              {{ products.productCode | lowercase | convertToSpaces: "-" }}
+            </td>
+            <td>{{ products.description }}</td>
+            <td>{{ products.releaseDate }}</td>
+            <td>{{ products.price | currency: "USD":"symbol":"1.2-2" }}</td>
+            <td><pm-star [rating]="products.starRating"></pm-star></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card-footer">
+      <button
+        class="btn btn-outline-secondary"
+        (click)="onBack()"
+        style="width: 80px;"
+      >
+        <i class="fa fa-chevron-left"></i> Back
+      </button>
+    </div>
   </div>
-</div>
-<div class="card-footer">
-  <button
-    class="btn btn-outline-secondary"
-    (click)="onBack()"
-    style="width: 80px;"
-  >
-    <i class="fa fa-chevron-left"></i> Back
-  </button>
-</div>
+</main>
