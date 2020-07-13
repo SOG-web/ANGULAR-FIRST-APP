@@ -9,9 +9,9 @@ import { ProductService } from './product.service';
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit {
-  pageTitle = 'Product Detail';
-  errorMessage = '';
-  products: IProduct | undefined;
+  pageTitle: string = 'Product Detail';
+  errorMessage: string = '';
+  product: IProduct | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,17 +19,18 @@ export class ProductDetailComponent implements OnInit {
     private productService: ProductService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     const param = this.route.snapshot.paramMap.get('id');
     if (param) {
       const id = +param;
       this.getProduct(id);
+      console.log(this.product);
     }
   }
 
   getProduct(id: number) {
     this.productService.getProductsFromServer(id).subscribe({
-      next: (productFromServer) => (this.products = productFromServer),
+      next: (productFromServer) => (this.product = productFromServer),
       error: (err) => (this.errorMessage = err),
     });
   }
