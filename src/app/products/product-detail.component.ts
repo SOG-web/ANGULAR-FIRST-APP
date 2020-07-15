@@ -11,7 +11,7 @@ import { ProductService } from './product.service';
 export class ProductDetailComponent implements OnInit {
   pageTitle: string = 'Product Detail';
   errorMessage: string = '';
-  product: IProduct | undefined;
+  products: IProduct | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,14 +23,14 @@ export class ProductDetailComponent implements OnInit {
     const param = this.route.snapshot.paramMap.get('id');
     if (param) {
       const id = +param;
-      this.getProduct(id);
-      console.log(this.product);
+      this.getProducts(id);
+      console.log(this.products);
     }
   }
 
-  getProduct(id: number) {
+  getProducts(id: number) {
     this.productService.getProductsFromServer(id).subscribe({
-      next: (productFromServer) => (this.product = productFromServer),
+      next: (productFromServer) => (this.products = productFromServer),
       error: (err) => (this.errorMessage = err),
     });
   }
