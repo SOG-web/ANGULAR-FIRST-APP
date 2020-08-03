@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { IProduct } from './products.interface';
 import { ProductService } from './product.service';
 
 @Component({
@@ -11,7 +10,7 @@ import { ProductService } from './product.service';
 export class ProductDetailComponent implements OnInit {
   pageTitle: string = 'Product Detail';
   errorMessage: string = '';
-  products: IProduct | undefined;
+  products: any;
 
   constructor(
     private route: ActivatedRoute,
