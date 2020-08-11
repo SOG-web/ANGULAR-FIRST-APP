@@ -8,8 +8,8 @@ import { ProductService } from './product.service';
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit {
-  pageTitle: string = 'Product Detail';
-  errorMessage: string = '';
+  pageTitle = 'Product Detail';
+  errorMessage = '';
   products: any;
 
   constructor(
@@ -28,7 +28,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   getProducts(id: number) {
-    this.productService.getProductsFromServer(id).subscribe({
+    this.productService.getProduct(id).subscribe({
       next: (productFromServer) => (this.products = productFromServer),
       error: (err) => (this.errorMessage = err),
     });
