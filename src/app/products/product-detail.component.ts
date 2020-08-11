@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ProductService } from './product.service';
+import { IProduct } from './products.interface';
 
 @Component({
   templateUrl: './product-detail.component.html',
@@ -10,7 +11,7 @@ import { ProductService } from './product.service';
 export class ProductDetailComponent implements OnInit {
   pageTitle = 'Product Detail';
   errorMessage = '';
-  products: any;
+  products: IProduct;
 
   constructor(
     private route: ActivatedRoute,
